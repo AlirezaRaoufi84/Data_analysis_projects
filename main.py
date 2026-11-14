@@ -32,3 +32,8 @@ ax = sns.scatterplot(data=df, x="defense", y="attack")
 df.sort_values(by="defense", ascending=False).head(3)
 fire_fly_pok = df.loc[(df["type1"] == "Fire") & (df["type2"] == "Flying")]
 len(fire_fly_pok)  # 8
+
+df.loc[(df["type1"] == "Poison") | (df["type2"] == "Poison")]
+df.loc[df["type1"] == "Ice"].sort_values(by="defense", ascending=False).head(3)
+
+df.loc[df["legendary"], ["type1"]].value_counts().head(1)  # most common legend type
