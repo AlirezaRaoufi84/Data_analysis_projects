@@ -57,3 +57,9 @@ df.loc[
 most_op_fire_poks = df.loc[
     ((df["type1"] == "Fire") & (df["attack"] > 100))
 ].sort_values("total", ascending=False)
+
+water_fly_poks = df.loc[
+    (df["type1"] == "Fire") & (df["type2"] == "Flying")
+].sort_values(
+    "total", ascending=False
+)  # all pokemons with type1 water and type2 flying
