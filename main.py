@@ -63,3 +63,7 @@ water_fly_poks = df.loc[
 ].sort_values(
     "total", ascending=False
 )  # all pokemons with type1 water and type2 flying
+
+legendary_fire_df = df.loc[
+    (df["type1"] == "Fire") & (df["legendary"]), ["name", "attack", "generation"]
+]
