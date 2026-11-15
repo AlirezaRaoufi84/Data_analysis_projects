@@ -37,3 +37,12 @@ df.loc[(df["type1"] == "Poison") | (df["type2"] == "Poison")]
 df.loc[df["type1"] == "Ice"].sort_values(by="defense", ascending=False).head(3)
 
 df.loc[df["legendary"], ["type1"]].value_counts().head(1)  # most common legend type
+df.loc[df["legendary"], ["type1"]].value_counts().plot(
+    kind="bar", ylabel="quantity"
+)  # most common legend type
+
+df["generation"].value_counts().plot(kind="barh")
+
+df.loc[(df["type1"] == "Water") & (df["generation"].isin([1, 2, 3]))].sort_values(
+    "total", ascending=False
+).head(3)
