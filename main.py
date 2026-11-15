@@ -67,3 +67,12 @@ water_fly_poks = df.loc[
 legendary_fire_df = df.loc[
     (df["type1"] == "Fire") & (df["legendary"]), ["name", "attack", "generation"]
 ]
+
+df.loc[df["speed"]].sort_values("speed", ascending=False)
+
+ax = df["speed"].plot(kind="hist", figsize=(8, 5), bins=100, xlabel="Speed")
+ax.axvline(df["speed"].quantile(0.05), color="red")
+ax.axvline(df["speed"].quantile(0.95), color="red")
+
+bottom_5, top_5 = df["speed"].quantile(0.05), df["speed"].quantile(0.95)
+slow_fast_pok = df.loc[(df["speed"] < bottom_5) | (df["speed"] > top_5)]
