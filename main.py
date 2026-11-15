@@ -3,6 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
+# Filtering and Sorting with Pokemon - start
 df = pd.read_csv("Pokemon.csv")
 df.head(5)
 df.info()
@@ -76,3 +78,5 @@ ax.axvline(df["speed"].quantile(0.95), color="red")
 
 bottom_5, top_5 = df["speed"].quantile(0.05), df["speed"].quantile(0.95)
 slow_fast_pok = df.loc[(df["speed"] < bottom_5) | (df["speed"] > top_5)]
+
+# Filtering and Sorting with Pokemon - done
