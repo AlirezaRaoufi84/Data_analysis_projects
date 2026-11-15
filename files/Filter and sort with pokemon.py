@@ -5,7 +5,7 @@ import seaborn as sns
 
 
 # Filtering and Sorting with Pokemon - start
-df = pd.read_csv("Pokemon.csv")
+df = pd.read_csv("../data/Pokemon.csv")
 df.head(5)
 df.info()
 
