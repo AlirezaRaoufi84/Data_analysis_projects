@@ -46,3 +46,10 @@ df["generation"].value_counts().plot(kind="barh")
 df.loc[(df["type1"] == "Water") & (df["generation"].isin([1, 2, 3]))].sort_values(
     "total", ascending=False
 ).head(3)
+
+df.loc[
+    ((df["type1"] == "Dragon") | (df["type2"] == "Dragon"))
+    & (df["generation"].isin([5, 6]))
+].sort_values("total", ascending=False).head(
+    3
+)  # strongest dragon type by total from last two generations
