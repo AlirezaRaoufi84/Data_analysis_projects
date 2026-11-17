@@ -7,7 +7,7 @@ from itertools import combinations
 df = pd.read_csv("../data/common_player_info.csv")
 df.head(5)
 df.shape
-df["school"].value_counts(ascending=True).sample(10)
+df["school"].value_counts(ascending=False).head(10)
 
 
 # Formula to use in a group of n people
@@ -26,4 +26,17 @@ def birthday_probability(number_of_people):
 birthday_probability(15)
 
 # Applying the math to our dataset
-GT_school_df = df.loc[df["school"] == "Georgia Tech"]
+# Combining all the people in our dataset in groups of two based on school == Kentucky
+ken_school_df = df.loc[df["school"] == "Kentucky"]
+name_df = pd.DataFrame(
+    combinations(ken_school_df["display_first_last"], 2),
+    columns=("person 1", "person 2"),
+)
+birthday_df = pd.DataFrame(
+    combinations(ken_school_df["birthdate"], 2), columns=("birthdate 1", "birthdate 2")
+)
+
+check_df = pd.concat([name_df, birthday_df], axis=1)
+check_df.sample(10)
+(check_df["birthdate 1"] == check_df["birthdate 2"]).sum()
+check_df.loc[(check_df["birthdate 1"] == check_df["birthdate 2"])]
