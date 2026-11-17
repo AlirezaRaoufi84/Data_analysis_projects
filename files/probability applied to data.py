@@ -40,3 +40,9 @@ check_df = pd.concat([name_df, birthday_df], axis=1)
 check_df.sample(10)
 (check_df["birthdate 1"] == check_df["birthdate 2"]).sum()
 check_df.loc[(check_df["birthdate 1"] == check_df["birthdate 2"])]
+
+michi_school_df = df.loc[df["school"] == "Michigan"]
+print(
+    f" the chance of two people who attended Michigan school have the same birthdate is {birthday_probability(50)}"
+)
+#  the chance of two people who attended Michigan school have the same birthdate is 0.9652914867514426
