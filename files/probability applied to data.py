@@ -1,13 +1,13 @@
 import pandas as pd
 import math
-
+from itertools import combinations
 # The probability of people sharing a birthday
 # Birthday Paradox
 
 df = pd.read_csv("../data/common_player_info.csv")
 df.head(5)
-
-df["school"].value_counts()
+df.shape
+df["school"].value_counts(ascending=True).sample(10)
 
 
 # Formula to use in a group of n people
@@ -26,3 +26,4 @@ def birthday_probability(number_of_people):
 birthday_probability(15)
 
 # Applying the math to our dataset
+GT_school_df = df.loc[df["school"] == "Georgia Tech"]
